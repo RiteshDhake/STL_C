@@ -14,7 +14,7 @@ typedef struct {
 // Protypes of Methods
 
 Vector* vector_create();
-void vector_push_back(Vector*);
+void vector_push_back(Vector*,void*);
 void* vector_get(Vector*,size_t);
 void vector_set(Vector*,size_t,void*);
 void vector_insert(Vector*,size_t,void*);
