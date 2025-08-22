@@ -1,112 +1,85 @@
-#include "vector.h"
+#include "stl.h"
 
-Vector* vector_create(){
-    Vector* vector = (Vector*)malloc(sizeof(Vector));
-    if(!vector){
-        return NULL;
+// Generate vector types with new compact names
+DEFINE_VEC(int)
+DEFINE_VEC(vec_int)
+
+void print_vector(vec_int *v) {
+    printf("Vector(len=%zu, cap=%zu): ", v->len, v->cap);
+    for (size_t i = 0; i < v->len; i++) {
+        printf("%d ", vec_int_get(v, i));
     }
-    vector->size =0;
-    vector->capacity = 4; //inital size be 4;
-    vector->data = (void**)malloc(sizeof(void*) * vector->capacity); // creating an array of void*
-    
-    
-    if(!vector->data){
-        free(vector);//free allocation
-        return NULL;
-    }
-
-    return vector;
-
+    printf("\n");
 }
-void vector_push_back(Vector* v,void* item){
-        //check size and capacity
-        if(v->size >= v->capacity){
-            size_t new_capacity = v->capacity*2;
-            void ** new_data =realloc(v->data,sizeof(void*)*new_capacity);
-            if(!new_data){
-                return;
-            }
-            v->data = new_data;
-            v->capacity = new_capacity;
+
+int main() {
+    vec_int v;
+    vec_int_init(&v);
+
+    printf("=== Testing vec_int ===\n");
+
+    // Push values
+    for (int i = 1; i <= 5; i++) {
+        vec_int_push(&v, i * 10);
+        printf("After push %d -> len=%zu, cap=%zu\n", i * 10, v.len, v.cap);
+        print_vector(&v);
+    }
+
+    // Get element
+    printf("Element at index 2 = %d\n", vec_int_get(&v, 2));
+
+    // Set element
+    vec_int_set(&v, 2, 99);
+    printf("After set index 2 -> len=%zu, cap=%zu\n", v.len, v.cap);
+    print_vector(&v);
+
+    // Remove element
+    vec_int_remove(&v, 3);
+    printf("After remove index 3 -> len=%zu, cap=%zu\n", v.len, v.cap);
+    print_vector(&v);
+
+    // Free inner vector
+    vec_int_free(&v);
+
+    printf("\n=== Testing vec_vec_int (2D vector) ===\n");
+
+    vec_vec_int vv;
+    vec_vec_int_init(&vv);
+
+    for (int i = 0; i < 3; i++) {
+        vec_int temp;
+        vec_int_init(&temp);
+        for (int j = 0; j < 3; j++) {
+            vec_int_push(&temp, i * 10 + j);
         }
-        v->data[v->size] = item;
-        v->size++;
-}
-
-void* vector_get(Vector* v ,size_t index){
-    if(index >= v->size){
-        return NULL;
+        vec_vec_int_push(&vv, temp);
+        printf("Added sub-vector %d -> outer len=%zu, cap=%zu\n", i, vv.len, vv.cap);
     }
-    return v->data[index];
-}
-void vector_set(Vector* v,size_t index,void* item){
-    if(index >= v->size){
-        return;
-    }
-    v->data[index] = item;
-}
 
-void vector_insert(Vector* v,size_t index,void* item){
-    if(v->size >= v->capacity){
-        size_t new_capacity = v->capacity*2;
-        void **new_data =realloc(v->data,sizeof(void*)*new_capacity);
-        if(!new_data){
-            return;
+    // Print nested vectors one by one
+    for (size_t i = 0; i < vv.len; i++) {
+        printf("Sub-vector %zu: ", i);
+        print_vector(&vv.data[i]);
+    }
+
+    // Print final nested vector representation like [ [..], [..], [..] ]
+    printf("\nNested vector representation: [");
+    for (size_t i = 0; i < vv.len; i++) {
+        printf("[");
+        for (size_t j = 0; j < vv.data[i].len; j++) {
+            printf("%d", vec_int_get(&vv.data[i], j));
+            if (j + 1 < vv.data[i].len) printf(", ");
         }
-        v->data = new_data;
-        v->capacity = new_capacity;
+        printf("]");
+        if (i + 1 < vv.len) printf(", ");
     }
-    if(index > v->size){
-        return;
+    printf("]\n");
+
+    // Cleanup
+    for (size_t i = 0; i < vv.len; i++) {
+        vec_int_free(&vv.data[i]);
     }
-    for(size_t i = v->size ; i>index ; i--){
-        v->data[i] = v->data[i - 1];
-    }
-    v->data[index] = item;
-    v->size++;
-}
+    vec_vec_int_free(&vv);
 
-
-void vector_remove(Vector* v, size_t index) {
-    if (index >= v->size) {
-        return; // invalid index
-    }
-
-    // shift elements left
-    for (size_t i = index; i < v->size - 1; i++) {
-        v->data[i] = v->data[i + 1];
-    }
-    v->data[v->size - 1] = NULL;
-    v->size--;
-
-    // shrink logic: if size is 1/4th of capacity, shrink by half
-    if (v->size > 0 && v->size <= v->capacity / 4) {
-        size_t new_capacity = v->capacity / 2;
-        if (new_capacity < 4) {  // don't shrink below minimum
-            new_capacity = 4;
-        }
-
-        void** new_data = realloc(v->data, sizeof(void*) * new_capacity);
-        if (new_data) {
-            v->data = new_data;
-            v->capacity = new_capacity;
-        }
-        // if realloc fails, just keep the old memory
-    }
-}
-
-
-void vector_free(Vector* v, void (*free_func)(void*)){
-    if (!v) return;
-    
-    if (free_func) {
-        for (size_t i = 0; i < v->size; i++) {
-            if (v->data[i]) {
-                free_func(v->data[i]); // free each element
-            }
-        }
-    }
-
-    free(v->data);
-    free(v);
+    return 0;
 }

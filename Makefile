@@ -6,28 +6,18 @@ CFLAGS = -Wall -Wextra -std=c11 -g -Iinclude
 SRC_DIR = src
 INC_DIR = include
 BUILD_DIR = build
-LIB_NAME = libstl.a
+TARGET = app   # final output executable
 
 # Source files (all .c except test files)
 SRC = $(filter-out $(SRC_DIR)/test_%.c, $(wildcard $(SRC_DIR)/*.c))
 OBJ = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 
-# Test sources
-TEST_SRC = $(wildcard $(SRC_DIR)/test_*.c)
-TEST_OBJ = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(TEST_SRC))
+# Default target
+all: $(TARGET)
 
-# Targets
-TARGET = test_vector
-
-all: $(LIB_NAME) $(TARGET)
-
-# Build static library
-$(LIB_NAME): $(OBJ)
-	ar rcs $@ $^
-
-# Build test executables (links with libstl)
-$(TARGET): $(LIB_NAME) $(TEST_OBJ)
-	$(CC) $(CFLAGS) -o $@ $(TEST_OBJ) -L. -lstl
+# Link executable from object files
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
 
 # Rule to compile source into build directory
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
@@ -39,8 +29,8 @@ $(BUILD_DIR):
 
 # Clean
 clean:
-	rm -rf $(BUILD_DIR) *.a $(TARGET)
+	rm -rf $(BUILD_DIR) $(TARGET)
 
-# Run test
+# Run
 run: $(TARGET)
 	./$(TARGET)
