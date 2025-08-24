@@ -9,7 +9,7 @@ BUILD_DIR = build
 TARGET = app   # final output executable
 
 # Source files (all .c except test files)
-SRC = $(filter-out $(SRC_DIR)/test_%.c, $(wildcard $(SRC_DIR)/*.c))
+SRC = $(wildcard $(SRC_DIR)/*.c)
 OBJ = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 
 # Default target

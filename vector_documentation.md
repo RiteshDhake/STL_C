@@ -25,7 +25,7 @@ The Vector Library provides a dynamic array implementation for C, similar to `st
 
 ### Include the Header
 ```c
-#include "vector.h"
+#include "stl.h"
 ```
 
 ### Generate Vector Types
@@ -220,7 +220,7 @@ void vec_T_free(vec_T *v)
 
 ### Basic Vector Operations
 ```c
-#include "vector.h"
+#include "stl.h"
 
 DEFINE_VEC(int)
 
