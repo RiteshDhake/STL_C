@@ -1,6 +1,12 @@
 #include "stl.h"
 
+typedef struct {
+    int roll_no;
+    char* name;
+}Student;
+
 // Define types - clean and simple
+DEFINE_VEC(Student)
 DEFINE_VEC(float)
 DEFINE_VEC(vec_float)
 DEFINE_VEC(int)  
@@ -123,4 +129,36 @@ void req1_stack_operations() {
     
     stack_int_free(&s);
     printf("\n");
+}
+
+void req1_vec_struct_operations(){
+    printf("=====Demonstrating Vector of Struct=======\n");
+    vec_Student students;
+    Student*S = (Student*)malloc(sizeof(Student));
+    vec_Student_init(&students);
+
+    printf("Enter Names of the Students in Struct\n");
+    for(int i =0 ; i < 5 ; i++){
+        char name[100]; 
+        scanf("%s",name);
+        
+        S->name = strdup(name);
+        S->roll_no = i;
+
+        vec_Student_push(&students,*S);
+    }
+
+    printf("Vector of students ");
+    printf("\n[");
+    for(int i = 0 ; i<5;i++){
+        printf("( Name:");
+        printf("%s",vec_Student_get(&students,i).name);
+        printf(",Age:");
+        printf("%d",vec_Student_get(&students,i).roll_no);
+        printf(")");
+    }
+    printf("]\n");
+
+    free(S);
+    vec_Student_free(&students);
 }

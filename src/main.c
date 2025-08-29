@@ -5,6 +5,8 @@ void req1_vector_operations();
 void req1_stack_operations();
 void req2_vector_operations();
 void req2_stack_operations();
+void req1_vec_struct_operations();
+void req2_string_vec_ops();
 
 int main() {
     printf("STL-for-C Demonstration\n");
@@ -17,6 +19,9 @@ int main() {
     // Call functions from req2.c  
     req2_vector_operations();
     req2_stack_operations();
+    req2_string_vec_ops();
+
+    req1_vec_struct_operations();
     
     printf("=== Demonstration Complete ===\n");
     

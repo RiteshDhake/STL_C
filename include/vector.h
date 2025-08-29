@@ -1,6 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
+
 #include "common.h"
+
 #define DEFINE_VEC(T) \
 typedef struct { \
  T *data; \

@@ -1,8 +1,13 @@
 #include "stl.h"
 
+typedef char* string;
+
+DEFINE_VEC(string);
 // Define types - clean and simple
 DEFINE_VEC(int)
 DEFINE_STACK(int)
+
+
 
 void req2_vector_operations() {
     printf("=== REQ2: Vector Operations (int) ===\n");
@@ -116,4 +121,27 @@ void req2_stack_operations() {
     stack_int_free(&s);
     stack_int_free(&temp);
     printf("\n");
+}
+
+void req2_string_vec_ops(){
+    printf("=====Demonstrating Vector of String=======");
+    vec_string names;
+    vec_string_init;
+    printf("\nPushing Names in Vec of String");
+    vec_string_push(&names,"Ritesh");
+    vec_string_push(&names,"Aditya");
+    vec_string_push(&names,"Arnav");
+    vec_string_push(&names,"Parth");
+    
+
+    printf("\n[");
+    for(int i = 0; i<4;i++){
+        printf(" %s",vec_string_get(&names,i));
+        if(i < 3){
+            printf(",");
+        }
+        
+    }
+    printf("]\n");
+    
 }
