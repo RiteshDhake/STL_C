@@ -305,8 +305,11 @@ STL_C/
 │   └── hashmap.h     # [Planned] HashMap implementation
 ├── src/
 │   ├── main.c        # Example usage and tests
-│   ├── req1.c        # Additional examples
-│   └── req2.c        # More examples
+│   ├── req1.c        # Vector and Stack Examples
+│   ├── req2.c        # Queue examples and more vector,stack examples
+│   ├── req3.c        # List examples
+│   ├── req4.c        # Sets examples
+│   └── req5.c        # Hashmaps examples
 ├── build/            # Build artifacts
 ├── README.md         # This file
 └── Makefile          # Build configuration
