@@ -24,15 +24,16 @@ STL_C is a header-only library that brings modern data structures and algorithms
 |----------------|--------|-------------|---------|
 | **Vector** | `vector.h` | Dynamic resizable array with O(1) amortized append | ✅ Complete |
 | **Stack** | `stack.h` | LIFO container built on vector foundation | ✅ Complete |
+| **List** | `list.h` | Doubly-linked list with O(1) insertion/deletion | ✅ Complete |
+| **Set** | `set.h` | Ordered collection of unique elements | ✅ Complete |
+| **HashMap** | `hashmap.h` | Hash table with fast key-value lookups | ✅ Complete |
 
 ### Coming Soon
 
 | Data Structure | Header | Description | Status |
 |----------------|--------|-------------|---------|
 | **Queue** | `queue.h` | FIFO container with efficient enqueue/dequeue | 🚧 Planned |
-| **List** | `list.h` | Doubly-linked list with O(1) insertion/deletion | 🚧 Planned |
-| **Set** | `set.h` | Ordered collection of unique elements | 🚧 Planned |
-| **HashMap** | `hashmap.h` | Hash table with fast key-value lookups | 🚧 Planned |
+
 
 ## 🛠️ Quick Start
 
