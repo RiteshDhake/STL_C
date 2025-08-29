@@ -6,7 +6,7 @@ DEFINE_VEC(string);
 // Define types - clean and simple
 DEFINE_VEC(int)
 DEFINE_STACK(int)
-
+DEFINE_QUEUE(int)
 
 
 void req2_vector_operations() {
@@ -143,5 +143,17 @@ void req2_string_vec_ops(){
         
     }
     printf("]\n");
+    
+}
+
+void req2_queue_int_ops(){
+    queue_int q;
+    queue_int_init(&q);
+    printf("\nEnqueuing 0-9 numbers in queue of integers");
+    for(int i = 0 ; i<10 ; i++){
+        queue_int_enqueue(&q,i);
+    }
+    printf("\nQueue front is: %d",queue_int_front(&q));
+    printf("\nQueue rear is: %d",queue_int_rear(&q));
     
 }

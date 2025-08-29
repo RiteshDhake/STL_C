@@ -7,6 +7,7 @@ void req2_vector_operations();
 void req2_stack_operations();
 void req1_vec_struct_operations();
 void req2_string_vec_ops();
+void req2_queue_int_ops();
 
 int main() {
     printf("STL-for-C Demonstration\n");
@@ -22,6 +23,7 @@ int main() {
     req2_string_vec_ops();
 
     req1_vec_struct_operations();
+    req2_queue_int_ops();
     
     printf("=== Demonstration Complete ===\n");
     
