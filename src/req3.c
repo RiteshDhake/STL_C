@@ -1,8 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <assert.h>
-#include "../include/hashmap.h"
+#include "stl.h"
+
 
 // Instantiate hashmap types for testing
 HASHMAP_INT_STRING;
@@ -486,7 +483,7 @@ void print_test_summary() {
     }
 }
 
-int main() {
+void demo_hashmap() {
     printf("HashMap Implementation Test Suite\n");
     printf("=================================\n");
     
@@ -503,5 +500,5 @@ int main() {
     
     print_test_summary();
     
-    return tests_failed > 0 ? 1 : 0;
+   
 }

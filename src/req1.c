@@ -162,3 +162,12 @@ void req1_vec_struct_operations(){
     free(S);
     vec_Student_free(&students);
 }
+
+void demo_req1(){
+        
+    // Call functions from req1.c
+    req1_vector_operations();
+    req1_stack_operations();
+    req1_vec_struct_operations();
+    
+}

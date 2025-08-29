@@ -14,7 +14,7 @@
         }\
         \
     static inline void queue_##T##_enqueue(queue_##T *q,T item){\
-        vec_##T_push(&q->data,item);\
+        vec_##T##_push(&q->data,item);\
     }\
     \
     /* Dequeue: remove element from the front */ \

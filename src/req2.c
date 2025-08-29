@@ -2,7 +2,7 @@
 
 typedef char* string;
 
-DEFINE_VEC(string);
+DEFINE_VEC(string)
 // Define types - clean and simple
 DEFINE_VEC(int)
 DEFINE_STACK(int)
@@ -154,6 +154,15 @@ void req2_queue_int_ops(){
         queue_int_enqueue(&q,i);
     }
     printf("\nQueue front is: %d",queue_int_front(&q));
-    printf("\nQueue rear is: %d",queue_int_rear(&q));
+    printf("\nQueue rear is: %d\n",queue_int_rear(&q));
     
+}
+
+void demo_req2(){
+
+    req2_queue_int_ops();
+    // Call functions from req2.c  
+    req2_vector_operations();
+    req2_stack_operations();
+    req2_string_vec_ops();
 }

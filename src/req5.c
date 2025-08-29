@@ -32,7 +32,7 @@ DEFINE_SET(char*, string, "%s")
 // type, type name , format specifier , comparison func, equality func, print func for custom structs 
 DEFINE_SET_CUSTOM(Student, Student, student_compare, student_equal, student_print)
 
-int main() {
+void demo_set() {
     // Integer set
     Set_int int_set;
     set_init_int(&int_set);
@@ -112,5 +112,5 @@ int main() {
     printf("Difference (Set1 - Set2): ");
     set_display_int(&difference_set);
     
-    return 0;
+    
 }

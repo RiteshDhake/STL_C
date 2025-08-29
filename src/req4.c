@@ -1,10 +1,10 @@
-#include "../include/list.h"
+#include"stl.h"
 
 // Create List<int> and List<char*>
 DEFINE_LIST(int, IntList);
 DEFINE_LIST(char*, StrList);
 
-int main() {
+void demo_list() {
     IntList nums;
     IntList_init(&nums);
     IntList_push_back(&nums, 10);
