@@ -27,12 +27,8 @@ STL_C is a header-only library that brings modern data structures and algorithms
 | **List** | `list.h` | Doubly-linked list with O(1) insertion/deletion | ✅ Complete |
 | **Set** | `set.h` | Ordered collection of unique elements | ✅ Complete |
 | **HashMap** | `hashmap.h` | Hash table with fast key-value lookups | ✅ Complete |
+| **Queue** | `queue.h` | FIFO container with efficient enqueue/dequeue | ✅ Complete |
 
-### Coming Soon
-
-| Data Structure | Header | Description | Status |
-|----------------|--------|-------------|---------|
-| **Queue** | `queue.h` | FIFO container with efficient enqueue/dequeue | 🚧 Planned |
 
 
 ## 🛠️ Quick Start
@@ -345,24 +341,21 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📈 Roadmap
 
-### Version 1.0 (Current)
+### Version 1.0 
 - ✅ Vector implementation
 - ✅ Stack implementation
 - ✅ Basic documentation
 - ✅ Example programs
 
-### Version 1.1 (Next)
-- 🚧 Queue implementation
-- 🚧 Doubly-linked list implementation
-- 🚧 Enhanced error handling
-- 🚧 Performance benchmarks
+### Version 1.1
+- ✅ Queue implementation
+- ✅ Doubly-linked list implementation
 
-### Version 2.0 (Future)
-- 🚧 Set implementation (balanced binary search tree)
-- 🚧 HashMap implementation (hash table)
+
+### Version 2.0 (Current)
+- ✅ Set implementation (balanced binary search tree)
+- ✅ HashMap implementation (hash table)
 - 🚧 Common algorithms (sort, search, etc.)
-- 🚧 Iterator support
-- 🚧 Thread-safety options
 
 ---
 
